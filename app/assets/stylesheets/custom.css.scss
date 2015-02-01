@@ -2,7 +2,6 @@
 @import "bootstrap";
 
 .header {
-  text-align: center;
   margin-top: 30px;
   margin-bottom: 40px;
   h3 {
@@ -17,6 +16,11 @@
 
 .jobs-container {
   border: 1px solid #000;
+}
+
+.footer {
+  text-align: right;
+  margin-top: 10px;
 }
 
 .sidebar {
