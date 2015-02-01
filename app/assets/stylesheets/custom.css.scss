@@ -1,2 +1,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.header {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  h3 {
+    margin-top: -5px;
+  }
+}
+
+.job {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ceedfa
+}
+
+.jobs-container {
+  border: 1px solid #000;
+}
+
+
+.sidebar {
+  border: 1px solid #000;
+}
