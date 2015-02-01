@@ -15,7 +15,7 @@ namespace :scraper do
       q: 'title:ruby rails',
       co: 'AU',
       highlight: 0,
-      limit: 10,
+      limit: 30,
       v: 2
     }
 
@@ -25,9 +25,6 @@ namespace :scraper do
 
     # Submit request
     result = JSON.parse(open(uri).read)
-
-    # Display results to screen
-    # puts result["postings"].second["location"]["locality"]
 
     # Store results in database
     result["results"].each do |result|
