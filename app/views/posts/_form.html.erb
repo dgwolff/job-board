@@ -1,0 +1,53 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :jobtitle %><br>
+    <%= f.text_field :jobtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :formatted_location %><br>
+    <%= f.text_field :formatted_location %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :snippet %><br>
+    <%= f.text_field :snippet %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :jobkey %><br>
+    <%= f.text_field :jobkey %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
