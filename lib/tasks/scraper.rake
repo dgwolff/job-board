@@ -14,6 +14,7 @@ namespace :scraper do
       format: JSON,
       q: 'title:ruby rails',
       co: 'AU',
+      highlight: 0,
       limit: 10,
       v: 2
     }
@@ -42,7 +43,6 @@ namespace :scraper do
       @post.snippet = result["snippet"]
       @post.url = result["url"]
       @post.jobkey = result["jobkey"]
-      @post.formatted_relative_time = result["formattedRelativeTime"]
 
       # Save Post
       @post.save
@@ -50,8 +50,9 @@ namespace :scraper do
 
   end
 
-  desc "TODO"
+  desc "Destroy all posts"
   task destroy_all_posts: :environment do
+    Post.destroy_all
   end
 
 end

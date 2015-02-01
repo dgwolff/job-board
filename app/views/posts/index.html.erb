@@ -1,43 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Posts</h1>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Jobtitle</th>
-      <th>Company</th>
-      <!-- <th>City</th>
-      <th>State</th> -->
-      <th>Formatted location</th>
-      <th>Date</th>
-      <th>Snippet</th>
-      <th>Url</th>
-      <!-- <th>Jobkey</th> -->
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= post.jobtitle %></td>
-        <td><%= post.company %></td>
-        <!-- <td><%= post.city %></td>
-        <td><%= post.state %></td> -->
-        <td><%= post.formatted_location %></td>
-        <td><%= post.date %></td>
-        <td><%= post.snippet %></td>
-        <td><%= link_to(truncate(post.url, :length => 30), post.url) %></td>
-        <!-- <td><%= post.jobkey %></td> -->
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Company</th>
+        <!-- <th>City</th>
+        <th>State</th> -->
+        <th>Location</th>
+        <th>Listed</th>
+        <th>Snippet</th>
+        <!-- <th>Jobkey</th> -->
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.jobtitle, post.url %></td>
+          <td><%= post.company %></td>
+          <!-- <td><%= post.city %></td>
+          <td><%= post.state %></td> -->
+          <td><%= post.formatted_location %></td>
+          <td><%= "#{time_ago_in_words(post.date)} ago" %></td>
+          <td><%= post.snippet %></td>
+          <!-- <td><%= post.jobkey %></td> -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
