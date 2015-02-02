@@ -12,28 +12,34 @@
     <h1>The best Ruby and Rails jobs, all in one place</h1>
     <h3>We only show current job ads, so you can optimise your job search</h3>
   </div>
-    <div class="col-md-9">
-      <div class="jobs-container">
-          <% @posts.each do |post| %>
-            <div class="job">
-              <div class="title"><%= link_to post.jobtitle, post.url %></div>
-              <div class="company"><%= post.company %></div>
-              <div class="location"><%= post.formattedlocation %></div>
-              <div class="time"><%= "#{time_ago_in_words(post.date)} ago" %></div>
-              <div class="snippet"><%= post.snippet %></div>
+  <div class="col-md-9 main-col">
+    <div class="jobs-container">
+        <% @posts.each do |post| %>
+          <div class="job">
+            <div class="row">
+              <div class="col-md-10">
+                <div class="title"><%= link_to post.jobtitle, post.url %></div>
+                <div class="company"><%= post.company %></div>
+                <div class="location"><%= post.formattedlocation %></div>
+                <div class="snippet"><%= post.snippet %></div>
+              </div>
+              <div class="col-md-2 text-center">
+                <div class="time"><%= "#{time_ago_in_words(post.date)} ago" %></div>
+              </div>
             </div>
-          <% end %>
-      </div>
-      <div class="footer">
-        <span id=indeed_at><a href="http://www.indeed.com/">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>                        
-      </div>
-      <div class="text-center">
-        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-      </div>
+          </div>
+        <% end %>
     </div>
-    <div class="col-md-3">
-      <div class="sidebar">
-        <p>Sidebar</p>
-      </div>
+    <div class="footer">
+      <span id=indeed_at><a href="http://www.indeed.com/">jobs</a> by <a href="http://www.indeed.com/" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>                        
     </div>
+    <div class="text-center">
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+  <div class="col-md-3 side-col">
+    <div class="sidebar">
+      <p>Sidebar</p>
+    </div>
+  </div>
 </div>

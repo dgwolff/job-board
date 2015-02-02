@@ -1,21 +1,32 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Whole page styling //
+
+body {
+  background-color: #F2F4F5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+// Layout components //
+
 .header {
   margin-top: 30px;
   margin-bottom: 40px;
+  font-weight: 600;
   h3 {
     margin-top: -5px;
   }
 }
 
 .job {
-  padding: 10px 20px;
-  border-bottom: 1px solid #ceedfa
+  padding: 20px 30px;
+  border-bottom: 1px solid #CEEDFA;
 }
 
 .jobs-container {
-  border: 1px solid #000;
+  //border: 1px solid #000;
+  background-color: #fff;
 }
 
 .footer {
@@ -24,5 +35,38 @@
 }
 
 .sidebar {
-  border: 1px solid #000;
+  //border: 1px solid #000;
+  background-color: #fff;
 }
+
+// Style job listings //
+
+.title {
+  color: #2A6496;
+  font-size: 18px;
+}
+
+.company {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.location {
+  color: #C4C4C4;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.snippet {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.time {
+  color: #C4C4C4;
+  font-size: 14px;
+}
+
+
