@@ -19,27 +19,25 @@ body {
   }
 }
 
-.job {
-  padding: 20px 30px;
-  border-bottom: 1px solid #CEEDFA;
-}
-
-.jobs-container {
-  //border: 1px solid #000;
-  background-color: #fff;
-}
-
 .footer {
   text-align: right;
   margin-top: 10px;
 }
 
 .sidebar {
-  //border: 1px solid #000;
   background-color: #fff;
 }
 
 // Style job listings //
+
+.job {
+  padding: 20px 30px;
+  border-bottom: 1px solid #CEEDFA;
+}
+
+.jobs-container {
+  background-color: #fff;
+}
 
 .title {
   color: #2A6496;
