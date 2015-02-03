@@ -1,3 +1,12 @@
+# Also add these feeds (filter for ruby/rails & duplicates via yahoo pipes)
+  # https://weworkremotely.com/categories/2/jobs.rss
+  # https://www.wfh.io/jobs.atom
+  # https://careers.stackoverflow.com/jobs/feed?searchTerm=ruby+rails&allowsremote=True
+  # http://nomadjobs.io/remote-jobs.rss
+# Simply Hired summaries aren't much good, perhaps ditch this and rely on only Indeed for AU jobs
+# Some jobs listed as "remote" aren't really or are only partially remote...
+
+
 namespace :scraper do
   desc "Fetch jobs from indeed"
   task scrape_indeed: :environment do
@@ -15,7 +24,7 @@ namespace :scraper do
       q: 'title:ruby rails',
       co: 'AU',
       highlight: 0,
-      limit: 30,
+      limit: 100,
       v: 2
     }
 
@@ -35,7 +44,7 @@ namespace :scraper do
       @post.company = result["company"]
       @post.city = result["city"]
       @post.state = result["state"]
-      @post.formattedlocation = result["formattedLocation"]
+      @post.location = result["formattedLocation"]
       @post.date = result["date"]
       @post.snippet = result["snippet"]
       @post.url = result["url"]
@@ -51,20 +60,20 @@ namespace :scraper do
   task scrape_sh: :environment do
     require 'feedjira'
 
+    feed = Feedjira::Feed.fetch_and_parse("http://www.simplyhired.com.au/a/job-feed/rss/q-ruby")
+    entries = feed.entries
+
     # Store results in database
-    result["results"].each do |result|
+    entries.each do |entry|
 
       # Create new Post
       @post = Post.new
-      @post.jobtitle = result["jobtitle"]
-      @post.company = result["company"]
-      @post.city = result["city"]
-      @post.state = result["state"]
-      @post.formattedlocation = result["formattedLocation"]
-      @post.date = result["date"]
-      @post.snippet = result["snippet"]
-      @post.url = result["url"]
-      @post.jobkey = result["jobkey"]
+      @post.jobtitle = entry.title.sub(/\s*\(.+\)$/, '')
+      # @post.company = 
+      @post.location = entry.title.slice(/(\(.*?\))/)
+      @post.url = entry.url
+      @post.snippet = entry.summary
+      @post.date = entry.published
 
       # Save Post
       @post.save
