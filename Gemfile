@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
+gem 'feedjira'
 
 
 group :development, :test do

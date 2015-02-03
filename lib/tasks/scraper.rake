@@ -1,6 +1,6 @@
 namespace :scraper do
   desc "Fetch jobs from indeed"
-  task scrape: :environment do
+  task scrape_indeed: :environment do
     require 'open-uri'
     require 'json'
 
@@ -25,6 +25,31 @@ namespace :scraper do
 
     # Submit request
     result = JSON.parse(open(uri).read)
+
+    # Store results in database
+    result["results"].each do |result|
+
+      # Create new Post
+      @post = Post.new
+      @post.jobtitle = result["jobtitle"]
+      @post.company = result["company"]
+      @post.city = result["city"]
+      @post.state = result["state"]
+      @post.formattedlocation = result["formattedLocation"]
+      @post.date = result["date"]
+      @post.snippet = result["snippet"]
+      @post.url = result["url"]
+      @post.jobkey = result["jobkey"]
+
+      # Save Post
+      @post.save
+    end
+
+  end
+
+  desc "Fetch jobs from Simply Hired"
+  task scrape_sh: :environment do
+    require 'feedjira'
 
     # Store results in database
     result["results"].each do |result|
