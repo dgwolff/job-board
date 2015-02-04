@@ -7,6 +7,8 @@
 # Some jobs listed as "remote" aren't really or are only partially remote...
 
 
+# https://pipes.yahoo.com/pipes/pipe.run?_id=cd8049981ac18873c53649f279bd829e&_render=json
+
 namespace :scraper do
   desc "Fetch jobs from indeed"
   task scrape_indeed: :environment do
@@ -45,6 +47,7 @@ namespace :scraper do
       @post.city = result["city"]
       @post.state = result["state"]
       @post.location = result["formattedLocation"]
+      @post.remote = "N"
       @post.date = result["date"]
       @post.snippet = result["snippet"]
       @post.url = result["url"]
@@ -56,11 +59,11 @@ namespace :scraper do
 
   end
 
-  desc "Fetch jobs from Simply Hired"
-  task scrape_sh: :environment do
+  desc "Fetch jobs from Stack Overflow"
+  task scrape_stack: :environment do
     require 'feedjira'
 
-    feed = Feedjira::Feed.fetch_and_parse("http://www.simplyhired.com.au/a/job-feed/rss/q-ruby")
+    feed = Feedjira::Feed.fetch_and_parse("https://pipes.yahoo.com/pipes/pipe.run?_id=cd8049981ac18873c53649f279bd829e&_render=rss", {:ssl_verify_peer => false})
     entries = feed.entries
 
     # Store results in database
@@ -68,9 +71,9 @@ namespace :scraper do
 
       # Create new Post
       @post = Post.new
-      @post.jobtitle = entry.title.sub(/\s*\(.+\)$/, '')
+      @post.jobtitle = entry.title
       # @post.company = 
-      @post.location = entry.title.slice(/(\(.*?\))/)
+      @post.remote = "Y"
       @post.url = entry.url
       @post.snippet = entry.summary
       @post.date = entry.published

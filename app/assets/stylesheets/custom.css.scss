@@ -28,7 +28,7 @@ body {
   background-color: #fff;
 }
 
-// Style job listings //
+// Style job container //
 
 .job {
   padding: 20px 30px;
@@ -64,6 +64,20 @@ body {
 
 .time {
   color: #C4C4C4;
+  font-size: 14px;
+}
+
+// Style remote job container //
+
+.remote-header {
+  padding: 10px 15px;
+}
+
+.remote-jobs-container .job {
+  padding: 10px 15px;
+}
+
+.remote-jobs-container .title {
   font-size: 14px;
 }
 

@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order("date DESC").paginate(:page => params[:page], :per_page => 20)
+    @posts = Post.where('remote = ?', 'N').order("date DESC").paginate(:page => params[:page], :per_page => 20)
+    @posts_remote = Post.where('remote = ?', 'Y')
   end
 
   # GET /posts/1
