@@ -68,11 +68,13 @@ namespace :scraper do
 
     # Store results in database
     entries.each do |entry|
+      
+      # Ruby / Rails Web Developer at Zearn (New York, NY) (allows remote)
 
       # Create new Post
       @post = Post.new
-      @post.jobtitle = entry.title
-      # @post.company = 
+      @post.jobtitle = entry.title.sub(/\s\bat\s.+/ , '')
+      # @post.company = (slice _at_company_)
       @post.remote = "Y"
       @post.url = entry.url
       @post.snippet = entry.summary

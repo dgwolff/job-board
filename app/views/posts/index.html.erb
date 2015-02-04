@@ -9,7 +9,7 @@
     </div>
   </nav>
   <div class="header text-center">
-    <h1>The best Ruby and Rails jobs, all in one place</h1>
+    <h1>Ruby and Rails jobs in Australia and abroad, all in one place</h1>
     <h3>We only show current job ads, so you can optimise your job search</h3>
   </div>
   <div class="col-md-8 main-col">
@@ -41,15 +41,16 @@
     <div class="sidebar">
       <div class="remote-header">
         <p>Considered a remote job?</p>
-        <p>Jobs for companies outside Australia that are either fully or partially remote</p>
+        <p>Jobs outside Australia that are either fully or partially remote:</p>
       </div>
       <div class="remote-jobs-container">
         <% @posts_remote.each do |post| %>
           <div class="job">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <div class="title"><%= link_to post.jobtitle, post.url %></div>
                 <div class="company"><%= post.company %></div>
+                <div class="time"><%= "#{time_ago_in_words(post.date)} ago" %></div>
               </div>
             </div>
           </div>
