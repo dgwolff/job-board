@@ -1,3 +1,5 @@
+# All Yahoo Pipes feeds are "pre-filtered" to only include posts with Ruby or Rails in title
+
 namespace :scraper do
 
   desc "Fetch jobs from indeed"
