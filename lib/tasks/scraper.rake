@@ -1,4 +1,5 @@
 namespace :scraper do
+
   desc "Fetch jobs from indeed"
   task scrape_indeed: :environment do
     require 'open-uri'
@@ -45,7 +46,6 @@ namespace :scraper do
       # Save Post
       @post.save
     end
-
   end
 
   desc "Fetch jobs from Stack Overflow"
@@ -74,7 +74,6 @@ namespace :scraper do
       # Save Post
       @post.save
     end
-
   end
 
   desc "Fetch jobs from We Work Remotely"
@@ -99,12 +98,19 @@ namespace :scraper do
       # Save Post
       @post.save
     end
-
   end
 
   desc "Destroy all posts"
   task destroy_all_posts: :environment do
     Post.destroy_all
+  end
+
+  desc 'Delete all posts and add from all sources'
+  task :update_all do
+  Rake::Task["scraper:destroy_all_posts"].invoke
+  Rake::Task["scraper:scrape_indeed"].invoke
+  Rake::Task["scraper:scrape_stack"].invoke
+  Rake::Task["scraper:scrape_wework"].invoke
   end
 
 end
