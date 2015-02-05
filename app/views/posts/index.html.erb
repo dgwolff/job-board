@@ -2,7 +2,7 @@
   <div class="header text-center">
     <img src="assets/ruby512.png" height="150" width="150">
     <h1>Ruby and Rails jobs in Australia and abroad, all in one place</h1>
-    <h3>We only show current job ads, so you can optimise your job search</h3>
+    <h3>We only show current job ads to help you optimise your search</h3>
   </div>
   <div class="col-md-8 main-col">
     <div class="jobs-title-australia">Jobs in Australia</div>
@@ -17,7 +17,7 @@
               <div class="snippet"><%= post.snippet %></div>
             </div>
             <div class="col-md-2 text-center">
-              <div class="time"><%= "#{time_ago_in_words(post.date)} ago" %></div>
+             <div class="time"><%= (post.date).strftime("%e %b") %></div>
             </div>
           </div>
         </div>
@@ -37,10 +37,10 @@
           <% @posts_remote.each do |post| %>
           <div class="job">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <div class="title"><%= link_to post.jobtitle, post.url %></div>
                 <div class="company"><%= post.company %></div>
-                <div class="time"><%= "#{time_ago_in_words(post.date)} ago" %></div>
+                <div class="time"><%= (post.date).strftime("%e %b") %></div>
               </div>
             </div>
           </div>

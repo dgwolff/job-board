@@ -1,14 +1,3 @@
-# Also add these feeds (filter for ruby/rails & duplicates via yahoo pipes)
-  # https://weworkremotely.com/categories/2/jobs.rss
-  # https://www.wfh.io/jobs.atom
-  # https://careers.stackoverflow.com/jobs/feed?searchTerm=ruby+rails&allowsremote=True
-  # http://nomadjobs.io/remote-jobs.rss
-# Simply Hired summaries aren't much good, perhaps ditch this and rely on only Indeed for AU jobs
-# Some jobs listed as "remote" aren't really or are only partially remote...
-
-
-# https://pipes.yahoo.com/pipes/pipe.run?_id=cd8049981ac18873c53649f279bd829e&_render=json
-
 namespace :scraper do
   desc "Fetch jobs from indeed"
   task scrape_indeed: :environment do
@@ -69,12 +58,39 @@ namespace :scraper do
     # Store results in database
     entries.each do |entry|
       
-      # Ruby / Rails Web Developer at Zearn (New York, NY) (allows remote)
+      # Full-Stack Ruby on Rails Developer at FetLife (BitLove Inc) (Toronto, ON, Canada) (allows remote)
+        # Not capturing (BitLove Inc) - need to fix - copy from scrape_wework?
 
       # Create new Post
       @post = Post.new
       @post.jobtitle = entry.title.sub(/\s\bat\s.+/ , '')
-      # @post.company = (slice _at_company_)
+      @post.company = entry.title.slice(/(?<=\bat\s)(\w+).+?(?=\()/)
+      @post.location = entry.title.slice(/\(([^)]*)\)/)
+      @post.remote = "Y"
+      @post.url = entry.url
+      @post.snippet = entry.summary
+      @post.date = entry.published
+
+      # Save Post
+      @post.save
+    end
+
+  end
+
+  desc "Fetch jobs from We Work Remotely"
+  task scrape_wework: :environment do
+    require 'feedjira'
+
+    feed = Feedjira::Feed.fetch_and_parse("https://pipes.yahoo.com/pipes/pipe.run?_id=fa508ee62731317ff192eeac01acd11a&_render=rss", {:ssl_verify_peer => false})
+    entries = feed.entries
+
+    # Store results in database
+    entries.each do |entry|
+
+      # Create new Post
+      @post = Post.new
+      @post.jobtitle = entry.title.slice(/(?<=\S:\s)((\w+).+)/)
+      @post.company = entry.title.slice(/(^[^:]+)/)
       @post.remote = "Y"
       @post.url = entry.url
       @post.snippet = entry.summary
