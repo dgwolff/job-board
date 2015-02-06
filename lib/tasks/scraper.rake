@@ -41,7 +41,7 @@ namespace :scraper do
       @post.location = result["formattedLocation"]
       @post.remote = "N"
       @post.date = result["date"]
-      @post.snippet = result["snippet"]
+      @post.summary = result["snippet"]
       @post.url = result["url"]
       @post.jobkey = result["jobkey"]
 
@@ -70,7 +70,7 @@ namespace :scraper do
       @post.location = entry.title.slice(/\(([^)]*)\)/)
       @post.remote = "Y"
       @post.url = entry.url
-      @post.snippet = entry.summary
+      @post.summary = entry.summary
       @post.date = entry.published
 
       # Save Post
@@ -94,7 +94,7 @@ namespace :scraper do
       @post.company = entry.title.slice(/(^[^:]+)/)
       @post.remote = "Y"
       @post.url = entry.url
-      @post.snippet = entry.summary
+      @post.summary = entry.summary
       @post.date = entry.published
 
       # Save Post

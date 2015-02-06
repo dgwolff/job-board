@@ -18,13 +18,14 @@ ActiveRecord::Schema.define(version: 20150201031334) do
     t.string   "company"
     t.string   "city"
     t.string   "state"
-    t.string   "formatted_location"
-    t.string   "date"
-    t.string   "snippet"
+    t.string   "location"
+    t.text     "remote"
+    t.datetime "date"
+    t.string   "summary"
     t.string   "url"
     t.string   "jobkey"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

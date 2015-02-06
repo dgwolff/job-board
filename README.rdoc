@@ -1,3 +1,5 @@
 == job-board
 
-A simple job board displaying ruby & rails job listings from indeed.com
+A simple job board displaying ruby & rails job listings in Australia and abroad.
+
+Job listings are sourced using via the Indeed API (http://www.indeed.com/) and by parsing RSS feeds from Stack Overflow (https://careers.stackoverflow.com/) and We Work Remotely (https://weworkremotely.com/).
