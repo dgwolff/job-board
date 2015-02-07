@@ -5,9 +5,10 @@ class CreatePosts < ActiveRecord::Migration
       t.string :company
       t.string :city
       t.string :state
-      t.string :formatted_location
-      t.string :date
-      t.string :snippet
+      t.string :location
+      t.string :remote
+      t.datetime :date
+      t.string :summary
       t.string :url
       t.string :jobkey
 
