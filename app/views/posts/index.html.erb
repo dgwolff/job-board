@@ -5,7 +5,9 @@
     <h3>We only show current job ads to optimise your search</h3>
   </div>
   <div class="col-md-8 main-col">
-    <div class="jobs-title-australia">Jobs in Australia</div>
+    <div class="jobs-title-australia">
+      <p>Jobs in Australia</p>
+    </div>
     <div class="jobs-container">
       <% @posts.each do |post| %>
         <div class="job">
@@ -32,20 +34,22 @@
   </div>
   <div class="col-md-4 side-col">
     <div class="sidebar">
-      <div class="jobs-title-remote">Remote Jobs</div>
-        <div class="remote-jobs-container">
-          <% @posts_remote.each do |post| %>
-          <div class="job">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="title"><%= link_to post.jobtitle, post.url %></div>
-                <div class="company"><%= post.company %></div>
-                <div class="time"><%= (post.date).strftime("%e %b") %></div>
-              </div>
+      <div class="jobs-title-remote">
+        <p>Remote Jobs</p>
+      </div>
+      <div class="remote-jobs-container">
+        <% @posts_remote.each do |post| %>
+        <div class="job">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="title"><%= link_to post.jobtitle, post.url %></div>
+              <div class="company"><%= post.company %></div>
+              <div class="time"><%= (post.date).strftime("%e %b") %></div>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
     </div>
   </div>
   <div class="footer">

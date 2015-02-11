@@ -53,11 +53,12 @@ a:hover {
 
 // Style job container //
 
-.jobs-title-australia {
+.jobs-title-australia p {
   background-color: #B40400;
   color: #fff;
   font-size: 16px;
   padding: 10px 0 10px 35px;
+  margin-bottom: 0;
 }
 
 .job {
@@ -99,11 +100,12 @@ a:hover {
 
 // Style remote job container //
 
-.jobs-title-remote {
+.jobs-title-remote p {
   background-color: #B40400;
   color: #fff;
   font-size: 16px;
   padding: 10px 0 10px 15px;
+  margin-bottom: 0;
 }
 
 .remote-jobs-container .job {
