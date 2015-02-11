@@ -8,6 +8,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 // Layout components //
 
 .header {
@@ -16,19 +20,35 @@ body {
   font-weight: 600;
   h1 {
     margin-top: 30px;
+    letter-spacing: -1px;
   }
   h3 {
     margin-top: 10px;
+    letter-spacing: -1px;
   }
 }
 
-.footer {
+.indeed-footer {
   text-align: right;
   margin-top: 10px;
 }
 
 .sidebar {
   background-color: #fff;
+}
+
+.footer {
+  clear: both;
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  margin: 30px 15px;
+  font-weight: 300;
+  padding: 5px 0;
+}
+
+.footer p {
+  margin-bottom: 0;
 }
 
 // Style job container //
