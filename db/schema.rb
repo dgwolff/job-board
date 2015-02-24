@@ -28,6 +28,6 @@ ActiveRecord::Schema.define(version: 20150224065549) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "posts", ["jobtitle", "company"], name: "index_posts_on_jobtitle_and_company", unique: true
+  add_index "posts", ["jobtitle", "company"], name: "index_posts_on_jobtitle_and_company", unique: true, where: "remote"
 
 end
