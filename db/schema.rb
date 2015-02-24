@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201031334) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150224065549) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "jobtitle"
@@ -30,5 +27,7 @@ ActiveRecord::Schema.define(version: 20150201031334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "posts", ["jobtitle", "company"], name: "index_posts_on_jobtitle_and_company", unique: true
 
 end
