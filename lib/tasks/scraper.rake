@@ -39,7 +39,7 @@ namespace :scraper do
       @post.city = result["city"]
       @post.state = result["state"]
       @post.location = result["formattedLocation"]
-      @post.remote = "N"
+      @post.remote = ""
       @post.date = result["date"]
       @post.summary = result["snippet"]
       @post.url = result["url"]
