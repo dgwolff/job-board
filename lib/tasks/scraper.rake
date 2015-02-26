@@ -66,7 +66,7 @@ namespace :scraper do
       # Create new Post
       @post = Post.new
       @post.jobtitle = entry.title.sub(/\s\bat\s.+/ , '')
-      @post.company = entry.title.slice(/(?<=\bat\s)(\w+).+?(?=\()/)
+      @post.company = entry.title.slice(/(?<=\bat )(.+?)(?= \([^,()]+, [A-Z]{2})/)
       @post.location = entry.title.slice(/\(([^)]*)\)/)
       @post.remote = "Y"
       @post.url = entry.url
