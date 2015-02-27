@@ -59,17 +59,12 @@ namespace :scraper do
 
     # Store results in database
     entries.each do |entry|
-      
-      # Full-Stack Ruby on Rails Developer at FetLife (BitLove Inc) (Toronto, ON, Canada) (allows remote)
-        # Not capturing (BitLove Inc) - need to fix - copy from scrape_wework?
 
       # Create new Post
       @post = Post.new
       @post.jobtitle = entry.title.sub(/\s\bat\s.+/ , '')
       @post.company = entry.title.slice(/(?<=\bat )(.+?)(?= \([^,()]+, [A-Z]{2})/)
-      @post.location = entry.title.slice(/\(([^)]*)\)/)
       @post.url = entry.url
-      @post.summary = entry.summary
       @post.date = entry.published
 
       @post.flagremote
@@ -94,7 +89,6 @@ namespace :scraper do
       @post.jobtitle = entry.title.slice(/(?<=\S:\s)((\w+).+)/)
       @post.company = entry.title.slice(/(^[^:]+)/)
       @post.url = entry.url
-      @post.summary = entry.summary
       @post.date = entry.published
 
       @post.flagremote
