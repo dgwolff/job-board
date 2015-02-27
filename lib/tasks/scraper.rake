@@ -68,10 +68,11 @@ namespace :scraper do
       @post.jobtitle = entry.title.sub(/\s\bat\s.+/ , '')
       @post.company = entry.title.slice(/(?<=\bat )(.+?)(?= \([^,()]+, [A-Z]{2})/)
       @post.location = entry.title.slice(/\(([^)]*)\)/)
-      @post.remote = "Y"
       @post.url = entry.url
       @post.summary = entry.summary
       @post.date = entry.published
+
+      @post.flagremote
 
       # Save Post
       @post.save
@@ -92,10 +93,11 @@ namespace :scraper do
       @post = Post.new
       @post.jobtitle = entry.title.slice(/(?<=\S:\s)((\w+).+)/)
       @post.company = entry.title.slice(/(^[^:]+)/)
-      @post.remote = "Y"
       @post.url = entry.url
       @post.summary = entry.summary
       @post.date = entry.published
+
+      @post.flagremote
 
       # Save Post
       @post.save
