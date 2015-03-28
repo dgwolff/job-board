@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  get '/posts', to: redirect('/')
   
   resources :posts, :only => [:index]
 
