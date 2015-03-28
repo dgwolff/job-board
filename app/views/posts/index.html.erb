@@ -9,7 +9,7 @@
       <p>Jobs in Australia</p>
     </div>
     <div class="jobs-container">
-      <% @post.each do |post| %>
+      <% @posts.each do |post| %>
         <div class="job">
           <div class="row">
             <div class="col-md-10">
@@ -29,7 +29,7 @@
       <span>Jobs from <a href="http://www.indeed.com/" title="Job Search"><img src="http://www.indeed.com/p/jobsearch.gif" style="border: 0; vertical-align: middle;" alt="Indeed job search"></a></span>                        
     </div>
     <div class="text-center">
-      <%= will_paginate @post, renderer: BootstrapPagination::Rails %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
     </div>
   </div>
   <div class="col-md-4 side-col">
@@ -38,7 +38,7 @@
         <p>Remote Jobs</p>
       </div>
       <div class="remote-jobs-container">
-        <% @post_remote.each do |post| %>
+        <% @posts_remote.each do |post| %>
         <div class="job">
           <div class="row">
             <div class="col-md-12">
