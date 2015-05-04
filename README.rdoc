@@ -1,4 +1,4 @@
-== job-board
+== RubyJobsAU
 
 A simple job board displaying Ruby & Rails job listings in Australia and abroad.
 
