@@ -1,4 +1,4 @@
-== RubyJobsAU
+## RubyJobsAU
 
 [![Code Climate](https://codeclimate.com/github/dgwolff/ruby-jobs-au/badges/gpa.svg)](https://codeclimate.com/github/dgwolff/ruby-jobs-au)
 
